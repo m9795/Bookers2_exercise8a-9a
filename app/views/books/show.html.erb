@@ -39,6 +39,25 @@
           </td>
         </tr>
       </table>
+      <% @book.book_comments.each do |book_comment| %>
+        <div class="container">
+          <div class="row">
+            <div>
+              <%= link_to(book_comment.user) do %>
+                <%= image_tag book_comment.user.get_profile_image, size:"50x50" %><br />
+                <%= book_comment.user.name %>
+              <% end %>
+            </div>
+            <div class="d-flex align-items-center">
+              <%= book_comment.comment %>
+            </div>
+            <div>
+              <%= link_to "Destroy", book_book_comment_path(book_comment), method: :delete, class: "btn btn-sm btn-danger"%>
+            </div>
+          </div>
+        </div>
+      <% end %> 
+      
       <%= form_with model: [@book, @book_comment] do |f| %>
         <div class="form-group">
           <%= f.text_area :comment, rows: '5', class: 'form-control book_comment' %>
