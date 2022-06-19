@@ -8,11 +8,13 @@
     </div>
   </div>
 </div>
-<h1>Books search for <span>"</span><%= @word %><span>"</span></h1>
+
 <table class="table">
   <% if @range == "User" %>
+  <h1>Users search for <span>"</span><%= @word %><span>"</span></h1>
     <%= render "/users/index", users: @users %>
   <% else %>
+  <h1>Books search for <span>"</span><%= @word %><span>"</span></h1>
     <%= render "/books/index", books: @books %>
   <% end %>
 </table>
