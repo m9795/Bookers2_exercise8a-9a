@@ -1,6 +1,6 @@
 <table>
   <tbody>
-    <% @book.book_comments.each do |book_comment| %>
+    <% book.book_comments.each do |book_comment| %>
     <tr>
       <td>
         <%= link_to(book_comment.user) do %>

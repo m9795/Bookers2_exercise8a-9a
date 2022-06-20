@@ -30,8 +30,9 @@
       <div class="comment-index">
         <%= render "book_comments/comment-index", book: @book %>
       </div>
-      
-      <%= render "book_comments/comment-form", book: @book, book_comment: @book_comment %>
+      <div class="comment-form">
+        <%= render "book_comments/comment-form", book: @book, book_comment: @book_comment %>
+      </div>
     </div>
   </div>
 </div>
