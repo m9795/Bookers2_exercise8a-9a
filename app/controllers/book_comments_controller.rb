@@ -5,13 +5,12 @@ class BookCommentsController < ApplicationController
     @comment.book_id = @book.id
     @comment.save
     # redirect_to request.referer
-    render :book_comments
   end
   
   def destroy
+    @book = Book.find(params[:book_id])
     BookComment.find(params[:id]).destroy
     # redirect_to request.referer
-    render :book_comments
   end
   
   private
