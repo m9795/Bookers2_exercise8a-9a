@@ -10,8 +10,11 @@ class Book < ApplicationRecord
   def self.favorites_rank
     #先週にするとデータ表示されなかったため、いったん今日を含む今週ランキングで表示するためコメントアウト
     # Book.joins(:favorites).where(favorites: { created_at: 0.days.ago.prev_week..0.days.ago.prev_week(:sunday)}).group(:book_id).order("count(book_id) desc")
-    #今週のランキング表示↓
-    Book.find(Favorite.group(:book_id).where(created_at: Time.current.all_week).order('count(book_id) desc').pluck(:book_id))
+    #今週のランキング表示 0いいねが表示されない↓
+    # Book.find(Favorite.group(:book_id).where(created_at: Time.current.all_week).order('count(book_id) desc').pluck(:book_id))
+    
+    #0いいね含む先週のランキング表示コード作成する！↓
+    Book.includes(:favorited_users).where(created_at: Time.current.all_week).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
   end
 
   validates :title,presence:true
