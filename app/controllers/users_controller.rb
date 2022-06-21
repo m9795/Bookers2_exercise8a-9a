@@ -5,7 +5,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    # @ranks = Book.favorite_ranks
   end
 
   def index
