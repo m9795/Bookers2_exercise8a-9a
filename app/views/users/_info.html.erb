@@ -19,10 +19,7 @@
 </table>
 
 <% if user != current_user %>
-  <tr>
-    <td><%= render "relationships/btn", user: user %></td>
-    <td><%= link_to "chatを始める", home_about_path %></td>
-  </tr>
+  <td><%= render "relationships/btn", user: user %></td>
 <% else %>
   <%= link_to edit_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
     <i class="fas fa-user-cog"></i>
