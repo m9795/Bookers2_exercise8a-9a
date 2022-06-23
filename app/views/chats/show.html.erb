@@ -1,2 +1,27 @@
-<h1>Chats#index</h1>
-<p>Find me in app/views/chats/index.html.erb</p>
+<h2><%= @user.name %> さんとのチャット</h2>
+<table>
+  <% @chats.each do |chat| %>
+    <% if chat.user_id == current_user.id %>
+    <tbody>
+      <tr>
+        <th>
+          <p style="text-align: left;"><%= chat.message %></p>
+        </th>
+        <th></th>
+      </tr>
+    <% else %>
+      <tr>
+        <th></th>
+        <th>
+          <p style="text-align: right;"><%= chat.message %></p>
+        </th>
+      </tr>
+    </tbody>
+    <% end %>
+  <% end %>
+</table>
+<%= form_with model: @chat do |f| %>
+  <%= f.text_field :message %>
+  <%= f.hidden_field :room_id %>
+  <% f.submit %>
+<% end %>
